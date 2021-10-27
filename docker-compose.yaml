@@ -7,8 +7,8 @@ services:
     volumes:
       - .:/app
     depends_on:
-      - users_db
-  users_db:
+      - db
+  db:
     image: postgres:latest
     restart: always
     environment:
