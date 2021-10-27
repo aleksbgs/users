@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  users_backend:
+    build: .
+    ports:
+      - 8001:8001
+    volumes:
+      - .:/app
+    depends_on:
+      - users_db
+  users_db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_DB: users
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    volumes:
+      - .dbdata:/var/lib/postgresql/data
+    ports:
+      - 5434:5434
