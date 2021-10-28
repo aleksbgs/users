@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	database.Connect()
+    database.Connect()
 	dsn := "host=" + "host.docker.internal" + " " + "user=" + "root" + " " + "password=" + "root" + " " + "dbname=" + "ambassador" + " " + "port=5432 sslmode=disable"
 
 	DB, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
