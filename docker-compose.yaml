@@ -18,4 +18,4 @@ services:
     volumes:
       - .dbdata:/var/lib/postgresql/data
     ports:
-      - 5434:5434
+      - 5434:5432
