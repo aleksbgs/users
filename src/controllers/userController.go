@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"github.com/aleksbgs/users/src/database"
 	"github.com/aleksbgs/users/src/middlewares"
 	"github.com/aleksbgs/users/src/models"
@@ -34,7 +33,9 @@ func Register(c *fiber.Ctx) error {
 	user.SetPassword(data["password"])
 
 	res := database.DB.Create(&user)
-	fmt.Println("res", res)
+	if res.Error != nil {
+		c.JSON(res.Error)
+	}
 
 	return c.JSON(user)
 }
@@ -82,4 +83,13 @@ func Login(c *fiber.Ctx) error {
 	return c.JSON(fiber.Map{
 		"jwt": token,
 	})
+}
+func User(c *fiber.Ctx) error {
+	id, _ := middlewares.GetUserId(c)
+
+	var user models.User
+
+	database.DB.Where("id = ?", id).First(&user)
+
+	return c.JSON(user)
 }
