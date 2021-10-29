@@ -3,7 +3,7 @@ package controllers
 import (
 	"github.com/aleksbgs/users/src/database"
 	"github.com/aleksbgs/users/src/models"
-	"github.com/gofiber/fiber"
+	"github.com/gofiber/fiber/v2"
 	"strconv"
 )
 
