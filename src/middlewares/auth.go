@@ -1,7 +1,7 @@
 package middlewares
 
 import (
-	"github.com/aleksbgs/ambassador/src/database"
+	"github.com/aleksbgs/users/src/database"
 	"github.com/aleksbgs/users/src/models"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gofiber/fiber/v2"

@@ -159,3 +159,20 @@ func UpdatePassword(c *fiber.Ctx) error {
 
 	return c.JSON(user)
 }
+func Users(c *fiber.Ctx) error {
+	var users []models.User
+
+	database.DB.Find(&users)
+
+	return c.JSON(users)
+}
+func GetUser(c *fiber.Ctx) error {
+	id, _ := strconv.Atoi(c.Params("id"))
+
+	var user models.User
+	user.Id = uint(id)
+
+	database.DB.Find(&user)
+
+	return c.JSON(user)
+}
