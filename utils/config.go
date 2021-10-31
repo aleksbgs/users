@@ -12,11 +12,11 @@ func ViperEnvVariable(key string) string {
 	// .env - It will search for the .env file in the current directory
 
 	//local setup
-	viper.SetConfigFile("/Users/aleksandar/go/src/github.com/aleksbgs/users/.env")
+	//viper.SetConfigFile("/Users/aleksandar/go/src/github.com/aleksbgs/users/.env")
 
 
 	//microservice setup
-	//viper.SetConfigFile("./.env")
+	viper.SetConfigFile("./.env")
 
 	// Find and read the config file
 	err := viper.ReadInConfig()

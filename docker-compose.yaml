@@ -2,12 +2,15 @@ version: '3.9'
 services:
   users_backend:
     build: .
+    container_name: users-ms
     ports:
       - 8001:8001
     volumes:
       - .:/app
     depends_on:
       - db
+    networks:
+      - users
   db:
     image: postgres:latest
     restart: always
@@ -17,5 +20,10 @@ services:
       POSTGRES_PASSWORD: root
     volumes:
       - .dbdata:/var/lib/postgresql/data
+    networks:
+      - users
     ports:
       - 5434:5432
+networks:
+  users:
+    name: users
